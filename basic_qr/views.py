@@ -117,7 +117,7 @@ def profile(request,pk):
     'info':info,
     'num':num,
     'allow':allow,
-    'path':"http://127.0.0.1:8000/" + str(request.path) ,
+    'path':"https://medi-tag.herokuapp.com/" + str(request.path) ,
     'age': "pending"
     }
     if(info.dob):
