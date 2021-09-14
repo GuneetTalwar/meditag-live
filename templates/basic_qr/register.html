@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<center><h1>Register Here</h1>
+</center>
+    <form style="padding: 10px;" method="post">
+      {% csrf_token %}
+
+      <div class="form-group row" style="margin-top: 18px; margin-bottom: 18px;">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+      <input  class="form-control" type="text" name="username" placeholder="Enter Username" class="form-control">
+
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin-top: 18px; margin-bottom: 18px;">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+      <input class="form-control" type="password" name="password1" placeholder="Enter Password" class="form-control">
+
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin-top: 18px; margin-bottom: 18px;">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Confirm Password</label>
+        <div class="col-sm-10">
+      <input class="form-control" type="password" name="password2" placeholder="Re-enter Password" class="form-control">
+
+        </div>
+      </div>
+
+    <br>
+      <center>
+        <input type="submit" value="Submit" class="btn btn-success">
+      </center>
+    </form>
+  </div>
+
+  {% if form.errors %}
+    <div class="alert alert-error container">
+
+      <ul>
+        {% for field in form %}
+          {% if field.errors %}
+            {% for error in field.errors %}
+            <div  class="alert alert-danger fade show text-center" role="alert">
+
+            {{ error|escape }}
+            </div>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+      {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+      {% endif %}
+    </div>
+  {% endif %}
+
+
+{% endblock %}
