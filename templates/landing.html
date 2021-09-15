@@ -1,97 +1,262 @@
-
-{% extends 'base.html' %}
-{% block header %}
-<li class="nav-item" style="margin-left: 17px;">
-  <a class="nav-link" href="{% url 'basic_qr:profile' num %}">Profile</a>
-</li>
-{% endblock %}
-{% block content %}
+<!DOCTYPE html>
 {% load static %}
+<html lang="en">
 
-     <style>
-        .child-step-container{
-            display: flex; justify-content: space-between;
-          }
-          .flex-container{
-            display: flex;
-          }
-        .steps-container{
-          background-color: #00305B; width: 100%; height: auto; text-align: center;
-          padding: 20px;
-        }
-        .step{
-          width: 30%;
-          height: 40vh;
-          padding: 30px;
-        }
-        .hero-image{
-          width: 70%; height:48vh
-        }
-        .ht-hero{
-          height:48vh
-        }
-        @media (max-width: 800px) {
-          .child-step-container{
-            display:flex;
-            flex-direction: column;
-            align-items: space-between;
-          }
-          .flex-container{
-            display: flex;
-            flex-direction: column;
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-          }
-          .step{
-          width: 100%;
-          height: auto;
-          padding: 40px;
-          }
-          .hero-image{
-          width: 100%; height:41vh
-          }
-          .ht-hero{
-          height:auto
-          }
-        }
+  <title>MediTag Home</title>
+  <meta content="" name="description">
 
-    </style>
-<div class="flex-container">
-<img class="hero-image" src="{% static 'assets/bgImg.jpg' %}" alt="img"  >
+  <meta content="" name="keywords">
 
-<div style="padding:20px; text-align: center;" class="ht-hero">
-    <h1 style="font-weight: bold">Medi Tag</h1>
-    <h3 >Record your health detail and medical reports all in one place</h3>
-    <p style="font-size: large; font-weight: bolder;" >---------------------------------------------</p>
-    <h3>For easy & one-tap access to life-saving information in case of emergency</h3>
-</div>
-</div>
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.ico' %}" rel="icon">
 
-<div class="steps-container">
-    <h1 style="color: #ffc107f7;"> 3 Simple Steps</h1>
-    <div class="child-step-container" >
-        <div style="display: flex;" class="step">
-            <h1 style="color: #ffc107f7;">1 </h1>
-        <img src="{% static 'assets/1.png' %}" alt="img" style="width: 100%; height: 100%;" >
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/logo.png' %}" alt="">
+        <span>MediTag</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Record your health detail and medical reports all in one place</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">For easy & one-tap access to life-saving information in case of emergency</h2>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>Get Started</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div style="display: flex;" class="step">
-            <h1 style="color: #ffc107f7;">2 </h1>
-
-        <img src="{% static 'assets/2.png' %}" alt="img" style="width: 100%; height: 100%;" >
-    </div>
-    <div style="display: flex;" class="step">
-        <h1 style="color: #ffc107f7;">3</h1>
-
-        <img src="{% static 'assets/3.png' %}" alt="img" style="width: 100%; height: 100%;" >
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="{% static 'assets/img/brImg.png' }" class="img-fluid" alt="">
+        </div>
+      </div>
     </div>
 
+  </section><!-- End Hero -->
 
+  <main id="main">
+
+    <!-- ======= Values Section ======= -->
+    <section id="values" class="values">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>To use</h2>
+          <p>Follow these 3 Simple Steps</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="box" data-aos="fade-up" data-aos-delay="200">
+              <img src="{% static 'assets/img/values-1.png' %}" class="img-fluid" alt="">
+              <h3>Register your account </h3>
+              <p>Go to the register page and sign up.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="box" data-aos="fade-up" data-aos-delay="400">
+              <img src="{% static 'assets/img/values-2.png' %}" class="img-fluid" alt="">
+              <h3>Fill in your information</h3>
+              <p>Fill out all the necessary details, refer to the FAQ section for more help on what to enter in each section.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="box" data-aos="fade-up" data-aos-delay="600">
+              <img src="{% static 'assets/img/values-3.png' %}" class="img-fluid" alt="">
+              <h3>Get your unique QR code</h3>
+              <p>This code will lead to your profile which can be viewed right on scanning it. Print and stick this QR code on the back of your phone, on your car etc.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Values Section -->
+
+    <section id="faq" class="faq">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>F.A.Q</h2>
+          <p>Frequently Asked Questions</p>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- F.A.Q List 1-->
+            <div class="accordion accordion-flush" id="faqlist1">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                    What should you fill in emergencies?
+                  </button>
+                </h2>
+                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                  Please specify the antidotes and procedure in case of an emergency. Eg., aspirin or any other blood thinner in case of heart attacks, steps to follow in case of a special condition that you’re prone to and might need an immediate response.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                      What should you fill in existing medical conditions?
+                  </button>
+                </h2>
+                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                    Genetic diseases like diabetes, blood pressure problems, cancer, thyroid, diabetes, respiratory diseases like asthma, seizures, chest pain, migraines, panic attacks, syndromes, aids, etc.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                    What should you fill in the disabilites section?
+                  </button>
+                </h2>
+                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                  What’s considered a disability is a very sensitive and debatable topic, hence it’s entirely on you to judge the need to mention something in the column.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+
+            <!-- F.A.Q List 2-->
+            <div class="accordion accordion-flush" id="faqlist2">
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
+                  What should you fill in the ongoing medication section?
+                  </button>
+                </h2>
+                <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    Here you must mention the prescribed medications you are currently using. You can go ahead and upload the prescriptions for the same in the upload documents section.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
+                    What should you fill in the allergies section?
+                  </button>
+                </h2>
+                <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    Mention the items you are allergic to. (Drug, food, insect, latex, mold, pet or a pollen allergy).
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
+                    What if you have something else you wish to mention?
+                  </button>
+                </h2>
+                <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    The others section is for any and all info that doesn't come under the other sub-categories.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End F.A.Q Section -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>MediTag</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="">GST</a>
+      </div>
     </div>
-</div>
-    <h1 style="text-align: center;"> 100+ Trusted User</h1>
-    <div class="steps-container">
+  </footer><!-- End Footer -->
 
-        <a class="nav-link" > <button> <h2>Register Now!</h2></button></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    </div>
+  <!-- Vendor JS Files -->
 
-{% endblock %}
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

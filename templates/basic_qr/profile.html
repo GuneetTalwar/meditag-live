@@ -143,7 +143,7 @@
   <br />
   <div class="row">
     <div class="col-4"><h4 class="text-wt">Name</h4></div>
-    <div class="col-8"><p class="text-wt">{{info.name}}</p></div>
+    <div class="col-8"><p class="text-wt">{{info.name_in_case_of_emergency}}</p></div>
   </div>
   <div class="row">
     <div class="col-4"><h4 class="text-wt">Contact No.</h4></div>
@@ -174,30 +174,25 @@
   </div>
   <div class="row">
     <div class="col-4">
-      <h4 class="card-title">Disabilities</h4>
-    </div>
-    <div class="col-8">
-      <p style="word-break:break-all">{{ info.disabilities }}</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-4">
       <h4 class="card-title">Special Medical Conditions</h4>
     </div>
     <div class="col-8">
-      <p style="word-break:break-all">{{ info.spl_med_conditions }}</p>
+      <p style="word-break:break-all">{{ info.existing_med_conditions }}</p>
     </div>
   </div>
 
   <div class="row">
     <div class="col-4"><h4 class="card-title">Ongoing Medication</h4></div>
-    <div class="col-8"><p style="word-break:break-all">{{ info.ongoing_meds }}</p></div>
+    <div class="col-8"><p style="word-break:break-all">{{ info.ongoing_medication }}</p></div>
   </div>
+
+<div class="row">
+  <div class="col-4"><h4 class="card-title">Others</h4></div>
+  <div class="col-8"><p style="word-break:break-all">{{ info.others }}</p></div>
 </div>
-
+</div>
 <br /><br />
-
+</div>
 <div class="common-container">
   <h1 class="text-wt">General</h1>
   <br />
