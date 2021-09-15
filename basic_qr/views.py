@@ -112,7 +112,7 @@ def profile(request,pk):
         if str(check_info.id) == pk:
 
             allow= True
-    
+
     context = {
     'info':info,
     'num':num,
@@ -156,6 +156,9 @@ def registerPage(request):
     form = CreateUserForm()
     if request.method == "POST":
         form = CreateUserForm(request.POST)
+        username = request.POST['username']
+        if ' ' in username:
+            messages.error(request,"The username cannot contain a space",extra_tags="danger")
         if form.is_valid():
             user = form.save()
             messages.success(request,"Registration Successful",extra_tags="success")

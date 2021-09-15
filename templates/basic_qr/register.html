@@ -41,11 +41,19 @@
       </form>
     </div>
 </section>
+{% for message in messages %}
+  <div class="alert alert-error container">
+    <div  class="alert alert-danger fade show text-center" role="alert">
+      {{message|escape}}
+    </div>
+</div>
+{% endfor %}
+
 
   {% if form.errors %}
     <div class="alert alert-error container">
 
-      <ul>
+
         {% for field in form %}
           {% if field.errors %}
             {% for error in field.errors %}
@@ -56,7 +64,7 @@
             {% endfor %}
           {% endif %}
         {% endfor %}
-      </ul>
+    
       {% if form.non_field_errors %}
         {{ form.non_field_errors }}
       {% endif %}
