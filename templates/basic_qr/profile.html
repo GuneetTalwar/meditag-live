@@ -152,6 +152,7 @@
 
   <div style="padding: 10px">
     <h1 class="text-center">Medical Record</h1>
+    <p class="text-center">Refer to <a href="{% url 'basic_qr:landing'  %}#faq">FAQs</a></p>
     <br />
     <div class="row">
       <div class="col-4">
@@ -171,7 +172,7 @@
     </div>
     <div class="row">
       <div class="col-4">
-        <h4 class="card-title">Special Medical Conditions</h4>
+        <h4 class="card-title">Existing Medical Conditions</h4>
       </div>
       <div class="col-8">
         <p style="word-break:break-all">{{ info.existing_med_conditions }}</p>
