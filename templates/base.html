@@ -52,17 +52,17 @@
           <li><a class="nav-link" href="{% url 'basic_qr:login' %}">Login</a></li>
           {% endif %}
 
-
-        {% block content %}
-        {% endblock %}
-
         </ul>
+
+
+
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
-
+  {% block content %}
+  {% endblock %}
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright">
