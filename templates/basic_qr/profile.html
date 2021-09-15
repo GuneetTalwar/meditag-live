@@ -58,6 +58,7 @@
       width: 30vw;
     }
     .container-3 {
+      margin-right: 10px;
       width: 40vw;
     }
     .img-size{
@@ -111,25 +112,20 @@
 
     <div class="container-3" style="text-align: center">
       <h4 class="card-title">Your Unique</h4>
+      <b style="color: #ebc634">QR Code</b>
       <div class="text-center" style="display: flex;  justify-content: center;">
-        <div style="display: flex; flex-direction: column;">
-        <h4 style="color: #ffc107f7; font-weight: bolder;">QR</h4>
-        <h4>Code</h4>
-      </div>
+
       <img
-        src="{% qr_url_from_text path size=1 version=10 image_format='png' %}"
+        src="{% qr_url_from_text path size=2 version=10 image_format='png' %}"
         alt="Hello world"
         download
       />
       </div>
-
-      <p></p>
       <a
         class="btn btn-primary"
         href="{% qr_url_from_text path size=4 version=10 image_format='png' %}"
         download
-        >Download</a
-      >
+        >Download</a>
       <!-- <p>
               {{info.id}}
             </p> -->
@@ -151,7 +147,6 @@
       <div class="col-4"><h4 class="text-wt">Contact No.</h4></div>
       <div class="col-8"><p class="text-wt">{{info.emergency_no}}</p></div>
     </div>
-    <img class="img-size-b" src="{% static 'assets/5.png' %}"  alt="home" />
 
   </div>
 
@@ -192,9 +187,13 @@
     <div class="col-4"><h4 class="card-title">Others</h4></div>
     <div class="col-8"><p style="word-break:break-all">{{ info.others }}</p></div>
   </div>
+  {% if allow %}
+  <center>
+    <a href="{% url 'basic_qr:update-medform' info.id %}" class="btn btn-primary">Edit Details</a>
+  </center>
+  {% endif %}
   </div>
   <br /><br />
-  </div>
   <div class="common-container">
     <h1 class="text-wt">General</h1>
     <br />
@@ -212,21 +211,8 @@
     </div>
   </div>
 
-  <div class="text-center m-2">
-    {% if allow %}
-    <a
-      class="btn btn-primary"
-      href="{% url 'basic_qr:update-medform' info.id %}"
-      role="button"
-      >Edit Details</a
-    >
-    {% endif %}
-    <!-- {% if allow %}
-    <a href="#" class="btn btn-primary">Upload Documents</a>
-    {% endif %}
-    <a href="#" class="btn btn-primary"> View Uploaded Documents</a> -->
-  </div>
-  <div class="text-center">
+
+<div class="common-container text-center">
         {% if allow %}
         <a href="{% url 'basic_qr:upload-document' %}" class="btn btn-primary">Upload A Document</a>
         {% endif %}

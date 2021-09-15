@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+<section>
   <div class="container">
 
-    <center>
-      <h1>Welcome to the Login page</h1>
-    </center>
+    <header class="section-header">
+
+      <p>Login Here</p>
+    </header>
     <form method="POST" >
             {% csrf_token %}
 
@@ -19,14 +21,14 @@
             <div class="form-group row" style="margin-top: 18px; margin-bottom: 18px;">
               <label for="staticEmail" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-10">
-					  <input class="form-control" type="password" name="password" placeholder="Enter Password" class="form-control">
+            <input class="form-control" type="password" name="password" placeholder="Enter Password" class="form-control">
 
               </div>
             </div>
 
             <br>
             <center>
-              <input class=" btn btn-success" type="submit" value="Log In">
+              <input class="btn btn-primary" type="submit" value="Log In">
 
     </form>
     {% for message in messages %}
@@ -36,5 +38,6 @@
 </div>
     {% endfor %}
 </div>
+</section>
 
 {% endblock %}
