@@ -16,16 +16,17 @@ def calculate_age(born):
 def displayDocuments(request,pk):
     allow= False
     info= UserProfile.objects.get(id=pk)
+    num = ""
     if request.user.is_authenticated:
 
         check_info = UserProfile.objects.get(user=request.user)
-        num = str(check_info.id)
+        num = check_info.id
         if str(check_info.id) == pk:
 
             allow= True
 
     docs = info.user.documents.all()
-    return render(request,"basic_qr/display_documents.html",{'docs':docs,'allow':allow})
+    return render(request,"basic_qr/display_documents.html",{'docs':docs,'allow':allow,'num':num})
 
 def uploadDocument(request):
 
