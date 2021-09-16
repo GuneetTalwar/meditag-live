@@ -7,8 +7,9 @@
     height: 70px;
   }
 </style>
-<div style="padding: 30px">
-  <h1><u>Fill in your Personal Details</u></h1>
+<divstyle="padding: 30px">
+  <h1  class="text-center" ><u>Fill in your Personal Details</u></h1>
+    <p  class="text-center" >Refer to <a href="{% url 'basic_qr:landing'  %}#faq" target="_blank" rel="noopener noreferrer" >FAQs</a></p>
   <br />
   <form method="post">
     {% csrf_token %}

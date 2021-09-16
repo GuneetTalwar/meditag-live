@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'basic_qr',
     'qr_code',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -142,6 +143,15 @@ STATIC_ROOT = os.path.join(BASE_DIR,"static")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#Sensitive
+AWS_ACCESS_KEY_ID = 'AKIA5E5AAEFXCO2YIW7Y'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'meditag-bucket'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+AWS_QUERYSTRING_AUTH = False
 
 if os.getcwd() == '/app':
     DEBUG = False

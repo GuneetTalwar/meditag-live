@@ -110,6 +110,7 @@
 
 
 
+    {% if allow %}
     <div class="container-3" style="text-align: center">
       <h4 class="card-title">Your Unique</h4>
       <b style="color: #ebc634">QR Code</b>
@@ -130,7 +131,7 @@
               {{info.id}}
             </p> -->
     </div>
-
+    {% endif %}
   </div>
 
   <br />
@@ -141,18 +142,18 @@
     <br />
     <div class="row">
       <div class="col-4"><h4 class="text-wt">Name</h4></div>
-      <div class="col-8"><p class="text-wt">{{info.name_in_case_of_emergency}}</p></div>
+      <div class="col-8"><p class="text-wt">{{info.contact_in_case_of_emergency}}</p></div>
     </div>
     <div class="row">
       <div class="col-4"><h4 class="text-wt">Contact No.</h4></div>
-      <div class="col-8"><p class="text-wt">{{info.emergency_no}}</p></div>
+      <div class="col-8"><p class="text-wt">{{info.contact_number_in_case_of_emergency}}</p></div>
     </div>
 
   </div>
 
   <div style="padding: 10px">
     <h1 class="text-center">Medical Record</h1>
-    <p class="text-center">Refer to <a href="{% url 'basic_qr:landing'  %}#faq">FAQs</a></p>
+    <p class="text-center">Refer to <a href="{% url 'basic_qr:landing'  %}#faq" target="_blank" rel="noopener noreferrer" >FAQs</a></p>
     <br />
     <div class="row">
       <div class="col-4">
