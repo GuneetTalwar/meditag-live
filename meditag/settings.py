@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ma!&m(940nosr!27$i-0i)tt5!+)c#mtw$4#**go+zy#05l&bu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["medi-tag.herokuapp.com",'127.0.0.1']
+ALLOWED_HOSTS = ["medi-tag.herokuapp.com","meditag.org",'127.0.0.1']
 
 
 # Application definition
