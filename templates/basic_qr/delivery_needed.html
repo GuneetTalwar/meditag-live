@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load qr_code %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>List of People Needing Delivery</h1>
+    <ol>
+      <li>
+      {% for person in info %}
+      <ul>
+        <li>Name: {{person.user_profile}}</li>
+        <li>Address: {{person.complete_address}}</li>
+        <li>Phone No: {{person.user_profile.contact_no}}</li>
+        <li>QR Code
+          <img
+            src="{% qr_url_from_text person.path size=2 version=10 image_format='png' %}"
+            alt="Hello world"
+            download
+          />
+          <a
+            
+            href="{% qr_url_from_text person.path size=4 version=10 image_format='png' %}"
+            download
+            >Download</a>
+        </li>
+      </ul>
+
+
+
+      {% endfor %}
+      </li>
+    </ol>
+  </body>
+</html>

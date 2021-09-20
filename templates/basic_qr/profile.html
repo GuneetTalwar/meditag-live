@@ -2,6 +2,7 @@
 {% block header %}
 <li class="nav-item" style="margin-left: 17px;">
   <a class="nav-link" href="{% url 'basic_qr:profile' num %}">Profile</a>
+  <!-- <a class="nav-link" href="{% url 'basic_qr:profile' num %}">Profile</a> -->
 </li>
 {% endblock %}
 {% block content %}
@@ -10,19 +11,19 @@
     font-size: 1rem;
   }
   .steps-container {
-    background-color: #00305b;
+    background-color: #f6f9ff;
     width: 100%;
     height: auto;
     padding: 10px;
   }
   .text-wt {
-    color: white;
+    color: #012970;
   }
   .responsive-flex {
     display: flex;
   }
   .common-container {
-    background-color: #00c2cb;
+    background-color: #f6f9ff;
     width: 100%;
     height: auto;
     padding: 10px;
@@ -95,9 +96,11 @@
               <li>Height (cms): {{info.height_cms}}</li>
               <li>Weight (kgs): {{info.weight_kgs}}</li> -->
         </ul>
-
-
-
+      {% if allow %}
+      {% if deliver %}
+      <a  href="{% url 'basic_qr:deliver-stickers' %}">Claim Your Free Kit!</a>
+      {% endif %}
+      {% endif %}
       </div>
 
 
@@ -127,6 +130,8 @@
         href="{% qr_url_from_text path size=4 version=10 image_format='png' %}"
         download
         >Download</a>
+
+
       <!-- <p>
               {{info.id}}
             </p> -->
@@ -142,7 +147,7 @@
     <br />
     <div class="row">
       <div class="col-4"><h4 class="text-wt">Name</h4></div>
-      <div class="col-8"><p class="text-wt">{{info.contact_in_case_of_emergency}}</p></div>
+      <div class="col-8"><p class="text-wt">{{info.contact_name_in_case_of_emergency}}</p></div>
     </div>
     <div class="row">
       <div class="col-4"><h4 class="text-wt">Contact No.</h4></div>

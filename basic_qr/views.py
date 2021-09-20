@@ -1,13 +1,19 @@
 from django.shortcuts import render,redirect
-from .forms import addUserInfo,CreateUserForm,UploadDocumentForm
+from .forms import addUserInfo,CreateUserForm,UploadDocumentForm,deliverStickerForm
 from django.contrib.auth import authenticate,login,logout
-from .models import UserProfile,UploadDocument
+from .models import UserProfile,UploadDocument,DeliverSticker
 import qrcode
 import qrcode.image.svg
 from io import BytesIO
 from django.contrib import messages
 # Create your views here.
 from datetime import date
+def deliveryInfo(request):
+    info = DeliverSticker.objects.all()
+    for i in info:
+        i.path = 'www.meditag.org/profile/' + str(i.user_profile.id)
+    return render(request,"basic_qr/delivery_needed.html",{'info':info})
+
 
 def calculate_age(born):
     today = date.today()
@@ -70,15 +76,28 @@ def medform(request):
         phone = request.POST.get('contact_no')
         form = addUserInfo(request.POST)
         if form.is_valid():
+            doc = form.save(commit=False)
+            doc.user = request.user
+            doc.save()
             form.save()
-        info = UserProfile.objects.get(contact_no=phone)
-        info.user = request.user
-
-        info.save()
         return redirect("basic_qr:profile",info.id)
     else:
         form = addUserInfo()
     return render(request, "basic_qr/med_form.html",{'form':form})
+
+def deliverStickers(request):
+    if request.method == 'POST':
+        form = deliverStickerForm(request.POST)
+        profile = UserProfile.objects.get(user=request.user)
+        if form.is_valid():
+            doc = form.save(commit=False)
+            doc.user_profile = profile
+            doc.save()
+            form.save()
+        return redirect("basic_qr:profile",profile.id)
+    else:
+        form = deliverStickerForm()
+    return render(request, "basic_qr/deliver_sticker_form.html",{'form':form})
 
 def updateMedform(request,pk):
     profile = UserProfile.objects.get(id=pk)
@@ -106,9 +125,12 @@ def profile(request,pk):
     info = UserProfile.objects.get(id=pk)
     num = ""
     allow= False
+    deliver = True
     if request.user.is_authenticated:
 
         check_info = UserProfile.objects.get(user=request.user)
+        if hasattr(check_info, 'delivery'):
+            deliver= False
         num = str(check_info.id)
         if str(check_info.id) == pk:
 
@@ -118,8 +140,9 @@ def profile(request,pk):
     'info':info,
     'num':num,
     'allow':allow,
-    'path':"https://medi-tag.herokuapp.com" + str(request.path) ,
-    'age': "pending"
+    'path':"www.meditag.org" + str(request.path) ,
+    'age': "pending",
+    'deliver': deliver,
     }
     if(info.dob):
         context['age'] = calculate_age(info.dob)

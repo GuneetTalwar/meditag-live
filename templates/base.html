@@ -28,7 +28,13 @@
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
 </head>
-
+<style >
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #4154f1 !important;
+  border:none !important;
+  margin:2px !important;
+}
+</style>
 <body>
 
   <!-- ======= Header ======= -->
@@ -52,7 +58,7 @@
           <li><a class="nav-link" href="{% url 'basic_qr:logout' %}">Logout</a></li>
           {% else %}
           <li><a class="nav-link" href="{% url 'basic_qr:landing' %}">Home</a></li>
-
+          <li><a class="nav-link" href="{% url 'basic_qr:landing'  %}#about">About Us</a></li>
           <li><a class="nav-link" href="{% url 'basic_qr:register' %}">Register</a></li>
           <li><a class="nav-link" href="{% url 'basic_qr:login' %}">Login</a></li>
           {% endif %}

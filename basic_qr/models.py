@@ -42,3 +42,8 @@ class UploadDocument(models.Model):
     def delete(self, *args, **kwargs):
         self.file.delete()
         super().delete(*args, **kwargs)
+
+class DeliverSticker(models.Model):
+    user_profile = models.OneToOneField(UserProfile,related_name="delivery", on_delete=models.CASCADE, null=True, blank=True)
+    complete_address = models.TextField(max_length=200,null=True,help_text="Do not forget to add the pin code")
+    path = models.CharField(max_length=200,null=True,blank=True)

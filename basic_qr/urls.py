@@ -15,5 +15,6 @@ path('faq/',views.faqPage,name="faq"),
 path('view-docs/<str:pk>',views.displayDocuments,name="display-documents"),
 path('upload-doc/',views.uploadDocument,name="upload-document"),
 path('delete-doc/<str:pk>',views.deleteDocument,name="delete-document"),
-
+path('deliver-stickers/',views.deliverStickers,name="deliver-stickers"),
+path('abc/',views.deliveryInfo,name="delivery-info"),
 ]
