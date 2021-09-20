@@ -73,14 +73,15 @@ def deleteDocument(request,pk):
 def medform(request):
 
     if request.method == 'POST':
-        phone = request.POST.get('contact_no')
         form = addUserInfo(request.POST)
+        id = ""
         if form.is_valid():
             doc = form.save(commit=False)
+            id = str(doc.id)
             doc.user = request.user
             doc.save()
             form.save()
-        return redirect("basic_qr:profile",info.id)
+        return redirect("basic_qr:profile",id)
     else:
         form = addUserInfo()
     return render(request, "basic_qr/med_form.html",{'form':form})
