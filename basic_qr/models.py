@@ -7,7 +7,7 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100, null=True)
-    contact_no = models.CharField(max_length=100, null=True,unique=True)
+    contact_no = models.CharField(max_length=100, null=True)
     contact_number_in_case_of_emergency = models.CharField(max_length=100, null=True,blank=True)
     contact_name_in_case_of_emergency = models.CharField(max_length=100,null=True)
     blood_group = models.CharField(max_length=100, null=True)
