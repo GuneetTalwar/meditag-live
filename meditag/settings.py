@@ -153,5 +153,5 @@ AWS_S3_SIGNATURE_VERSION = 's3v4'
 
 AWS_QUERYSTRING_AUTH = False
 
-if os.getcwd() == '/app':
-    DEBUG = False
+# if os.getcwd() == '/app':
+#     DEBUG = False
