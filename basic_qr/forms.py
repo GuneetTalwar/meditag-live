@@ -17,7 +17,7 @@ class addUserInfo(forms.ModelForm):
             visible.field.widget.attrs['class'] = 'form-control'
     class Meta:
         model = UserProfile
-        exclude = ('user',)
+        exclude = ('user','path')
         widgets = {
             'dob': DateInput(),
         }

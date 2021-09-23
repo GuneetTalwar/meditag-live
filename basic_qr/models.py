@@ -22,7 +22,8 @@ class UserProfile(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     dob = models.DateField(blank=True,null=True)
-    address = models.TextField(null=True,blank=True)
+    address = models.TextField(null=True,blank=True,help_text="(Fill in to claim your free stickers)(Enter Pin Code)")
+    path = models.CharField(max_length=200,null=True,blank=True)
     def __str__(self):
         return self.name
 def user_directory_path(instance, filename):

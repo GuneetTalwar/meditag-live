@@ -14,6 +14,15 @@ def deliveryInfo(request):
         i.path = 'www.meditag.org/profile/' + str(i.user_profile.id)
     return render(request,"basic_qr/delivery_needed.html",{'info':info})
 
+def newDeliveryInfo(request):
+    info = UserProfile.objects.all()
+    final_info = []
+    for i in info:
+        if i.address:
+            final_info.append(i)
+            i.path = 'www.meditag.org/profile/' + str(i.id)
+
+    return render(request,"basic_qr/new_delivery.html",{'info':final_info})
 
 def calculate_age(born):
     today = date.today()
@@ -126,12 +135,12 @@ def profile(request,pk):
     info = UserProfile.objects.get(id=pk)
     num = ""
     allow= False
-    deliver = True
+    # deliver = True
     if request.user.is_authenticated:
 
         check_info = UserProfile.objects.get(user=request.user)
-        if hasattr(check_info, 'delivery'):
-            deliver= False
+        # if hasattr(check_info, 'delivery'):
+        #     deliver= False
         num = str(check_info.id)
         if str(check_info.id) == pk:
 
@@ -143,7 +152,7 @@ def profile(request,pk):
     'allow':allow,
     'path':"www.meditag.org" + str(request.path) ,
     'age': "pending",
-    'deliver': deliver,
+    #'deliver': deliver,
     }
     if(info.dob):
         context['age'] = calculate_age(info.dob)
@@ -186,8 +195,12 @@ def registerPage(request):
             messages.error(request,"The username cannot contain a space",extra_tags="danger")
         if form.is_valid():
             user = form.save()
-            messages.success(request,"Registration Successful",extra_tags="success")
-            return redirect('basic_qr:login')
+        
+            user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+            login(request, user)
+            return redirect("basic_qr:medform")
 
     context = {'form':form}
     return render(request,"basic_qr/register.html",context)
