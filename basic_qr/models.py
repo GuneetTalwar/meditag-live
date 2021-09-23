@@ -14,11 +14,12 @@ class UserProfile(models.Model):
     height_cms = models.IntegerField(null=True,help_text="*")
     weight_kgs =models.FloatField(null=True,help_text="*")
     allergies = models.TextField(null=True,blank=True)
-    others = models.TextField(null=True,blank=True)
+    
     emergencies = models.TextField(null=True,blank=True)
 
     existing_med_conditions = models.TextField(null=True,blank=True)
     ongoing_medication = models.TextField(null=True,blank=True)
+    others = models.TextField(null=True,blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     dob = models.DateField(blank=True,null=True)
