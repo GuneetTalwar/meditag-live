@@ -14,7 +14,7 @@ class UserProfile(models.Model):
     height_cms = models.IntegerField(null=True,help_text="*")
     weight_kgs =models.FloatField(null=True,help_text="*")
     allergies = models.TextField(null=True,blank=True)
-    
+
     emergencies = models.TextField(null=True,blank=True)
 
     existing_med_conditions = models.TextField(null=True,blank=True)
@@ -25,8 +25,11 @@ class UserProfile(models.Model):
     dob = models.DateField(blank=True,null=True)
     address = models.TextField(null=True,blank=True,help_text="(Fill in to claim your free stickers)(Enter Pin Code)")
     path = models.CharField(max_length=200,null=True,blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name
+    class Meta:
+         ordering = ['created_at']
 def user_directory_path(instance, filename):
 
     # file will be uploaded to MEDIA_ROOT / user_<id>/<filename>

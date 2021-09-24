@@ -195,7 +195,7 @@ def registerPage(request):
             messages.error(request,"The username cannot contain a space",extra_tags="danger")
         if form.is_valid():
             user = form.save()
-        
+
             user = authenticate(username=form.cleaned_data['username'],
                                     password=form.cleaned_data['password1'],
                                     )
